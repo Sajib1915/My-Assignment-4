@@ -83,3 +83,127 @@ const jobs = [
 ];
 // ── State ──
 let currentTab = "all";
+
+// ── DOM Elements ──
+const jobContainer = document.getElementById("jobContainer");
+const noJobs = document.getElementById("noJobs");
+const totalCount = document.getElementById("totalCount");
+const interviewCount = document.getElementById("interviewCount");
+const rejectedCount = document.getElementById("rejectedCount");
+const jobsCountLabel = document.getElementById("jobsCountLabel");
+const tabs = document.querySelectorAll(".tab");
+
+// ── Render Cards ──
+function renderCards() {
+  jobContainer.innerHTML = "";
+
+  let filtered = [];
+
+  if (currentTab === "all") {
+    filtered = jobs;
+  } else if (currentTab === "interview") {
+    filtered = jobs.filter(j => j.status === "interview");
+  } else if (currentTab === "rejected") {
+    filtered = jobs.filter(j => j.status === "rejected");
+  }
+
+  // Show/hide no jobs message
+  if (filtered.length === 0) {
+    noJobs.classList.remove("hidden");
+    jobsCountLabel.textContent = currentTab === "all" ? "0 jobs" : "0 of " + jobs.length + " jobs";
+  } else {
+    noJobs.classList.add("hidden");
+    if (currentTab === "all") {
+      jobsCountLabel.textContent = filtered.length + " jobs";
+    } else {
+      jobsCountLabel.textContent = filtered.length + " of " + jobs.length + " jobs";
+    }
+  }
+
+  filtered.forEach(job => {
+    const card = document.createElement("div");
+    card.classList.add("job-card");
+    if (job.status === "interview") card.classList.add("interview-card");
+    if (job.status === "rejected") card.classList.add("rejected-card");
+    card.setAttribute("data-id", job.id);
+
+    // Status badge text
+    let badgeText = "NOT APPLIED";
+    let badgeClass = "";
+    if (job.status === "interview") { badgeText = "INTERVIEW"; badgeClass = "interview"; }
+    if (job.status === "rejected")  { badgeText = "REJECTED";  badgeClass = "rejected"; }
+
+    card.innerHTML = `
+      <div class="card-top">
+        <div>
+          <p class="company-name">${job.companyName}</p>
+          <p class="position">${job.position}</p>
+        </div>
+        <button class="delete-btn" onclick="deleteJob(${job.id})"><img src="./Assets/delete.png" alt="delete" /></button>
+      </div>
+      <p class="card-meta">
+        <span>${job.location}</span>
+        <span>${job.type}</span>
+        <span>${job.salary}</span>
+      </p>
+      <span class="status-badge ${badgeClass}">${badgeText}</span>
+      <p class="description">${job.description}</p>
+      <div class="card-buttons">
+        <button class="btn-interview ${job.status === 'interview' ? 'active' : ''}" onclick="setStatus(${job.id}, 'interview')">INTERVIEW</button>
+        <button class="btn-rejected ${job.status === 'rejected' ? 'active' : ''}" onclick="setStatus(${job.id}, 'rejected')">REJECTED</button>
+      </div>
+    `;
+
+    jobContainer.appendChild(card);
+  });
+
+  updateDashboard();
+}
+
+// ── Update Dashboard ──
+function updateDashboard() {
+  const total = jobs.length;
+  const interview = jobs.filter(j => j.status === "interview").length;
+  const rejected = jobs.filter(j => j.status === "rejected").length;
+
+  totalCount.textContent = total;
+  interviewCount.textContent = interview;
+  rejectedCount.textContent = rejected;
+}
+
+// ── Set Status (Interview / Rejected Toggle) ──
+function setStatus(id, status) {
+  const job = jobs.find(j => j.id === id);
+  if (!job) return;
+
+  // Toggle: same button click again removes status
+  if (job.status === status) {
+    job.status = "none";
+  } else {
+    job.status = status;
+  }
+
+  renderCards();
+}
+
+// ── Delete Job ──
+function deleteJob(id) {
+  const index = jobs.findIndex(j => j.id === id);
+  if (index !== -1) {
+    jobs.splice(index, 1);
+  }
+  renderCards();
+}
+
+// ── Tab Switching ──
+tabs.forEach(tab => {
+  tab.addEventListener("click", function () {
+    tabs.forEach(t => t.classList.remove("active"));
+    this.classList.add("active");
+    currentTab = this.getAttribute("data-tab");
+    renderCards();
+  });
+});
+
+// ── Initial Render ──
+renderCards();

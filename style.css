@@ -82,3 +82,205 @@ h1 {
   font-size: 0.9rem;
   color: #64748b;
 }
+
+/* ── Tabs ── */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 6px 18px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.tab.active {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+
+/* ── Job Card ── */
+.job-card {
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 16px;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-left 0.2s ease;
+  cursor: pointer;
+}
+
+.job-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.job-card.interview-card {
+  border-left: 4px solid #16a34a;
+}
+
+.job-card.rejected-card {
+  border-left: 4px solid #dc2626;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.company-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a2b4a;
+}
+
+.position {
+  font-size: 0.88rem;
+  color: #475569;
+  margin-top: 2px;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #94a3b8;
+  font-size: 1.1rem;
+}
+
+.delete-btn img {
+  width: 30px;
+  height: 30px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.delete-btn:hover img {
+  opacity: 1;
+}
+
+.card-meta {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin: 10px 0;
+}
+
+.card-meta span::after {
+  content: ' • ';
+}
+
+.card-meta span:last-child::after {
+  content: '';
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #f1f5f9;
+  color: #475569;
+  margin-bottom: 10px;
+}
+
+.status-badge.interview { background: #dcfce7; color: #16a34a; }
+.status-badge.rejected  { background: #fee2e2; color: #dc2626; }
+
+.description {
+  font-size: 0.85rem;
+  color: #475569;
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-interview {
+  padding: 6px 16px;
+  border-radius: 6px;
+  border: 1px solid #16a34a;
+  background: #fff;
+  color: #16a34a;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-interview.active,
+.btn-interview:hover {
+  background: #16a34a;
+  color: #fff;
+}
+
+.btn-rejected {
+  padding: 6px 16px;
+  border-radius: 6px;
+  border: 1px solid #dc2626;
+  background: #fff;
+  color: #dc2626;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-rejected.active,
+.btn-rejected:hover {
+  background: #dc2626;
+  color: #fff;
+}
+
+/* ── No Jobs ── */
+.no-jobs {
+  text-align: center;
+  padding: 60px 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.no-jobs img {
+  width: 80px;
+  margin-bottom: 16px;
+}
+
+.no-jobs-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a2b4a;
+  margin-bottom: 6px;
+}
+
+.no-jobs-sub {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.hidden { display: none; }
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .dash-card {
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .dash-card:last-child {
+    border-bottom: none;
+  }
+}
