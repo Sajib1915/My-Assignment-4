@@ -3,9 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Job Application Tracker</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    
+    <div class="container">
+
+    <!-- Dashboard -->
+    <h1>Job Application Tracker</h1>
+    <div class="dashboard">
+      <div class="dash-card">
+        <p class="label">Total</p>
+        <p class="count" id="totalCount">8</p>
+      </div>
+      <div class="dash-card">
+        <p class="label">Interview</p>
+        <p class="count green" id="interviewCount">0</p>
+      </div>
+      <div class="dash-card">
+        <p class="label">Rejected</p>
+        <p class="count red" id="rejectedCount">0</p>
+      </div>
+    </div>
+
+
+  <script src="script.js"></script>
 </body>
 </html>

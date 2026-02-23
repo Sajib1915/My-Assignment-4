@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f4f8;
+  min-height: 100vh;
+  padding: 30px 20px;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a2b4a;
+  margin-bottom: 24px;
+}
+/* ── Dashboard ── */
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 32px;
+  overflow: hidden;
+}
+
+.dash-card {
+  padding: 20px 24px;
+  border-right: 1px solid #e2e8f0;
+}
+
+.dash-card:last-child {
+  border-right: none;
+}
+
+.dash-card .label {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+.dash-card .count {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a2b4a;
+}
+
+.count.green { color: #16a34a; }
+.count.red   { color: #dc2626; }
