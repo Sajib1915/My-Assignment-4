@@ -56,3 +56,29 @@ h1 {
 
 .count.green { color: #16a34a; }
 .count.red   { color: #dc2626; }
+
+/* ── Jobs Section ── */
+.jobs-section {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  padding: 24px;
+}
+
+.jobs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.jobs-header h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1a2b4a;
+}
+
+.jobs-header span {
+  font-size: 0.9rem;
+  color: #64748b;
+}
