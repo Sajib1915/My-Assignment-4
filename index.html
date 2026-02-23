@@ -25,7 +25,32 @@
         <p class="count red" id="rejectedCount">0</p>
       </div>
     </div>
+    <!-- Jobs Section -->
+    <div class="jobs-section">
+      <div class="jobs-header">
+        <h2>Available Jobs</h2>
+        <span id="jobsCountLabel">8 jobs</span>
+      </div>
 
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab active" data-tab="all">All</button>
+        <button class="tab" data-tab="interview">Interview</button>
+        <button class="tab" data-tab="rejected">Rejected</button>
+      </div>
+
+      <!-- Job Cards Container -->
+      <div id="jobContainer"></div>
+
+      <!-- No Jobs Available -->
+      <div id="noJobs" class="no-jobs hidden">
+        <img src="./jobs.png" alt="No Jobs" />
+        <p class="no-jobs-title">No jobs available</p>
+        <p class="no-jobs-sub">Check back soon for new job opportunities</p>
+      </div>
+    </div>
+
+  </div>
 
   <script src="script.js"></script>
 </body>
