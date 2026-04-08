@@ -8,7 +8,8 @@ A simple and useful web application to track your job applications — built wit
 
 ## 📸 Screenshot
 
-<img width="746" height="425" alt="image" src="https://github.com/user-attachments/assets/826b6b84-c0c4-4953-8ab6-6b94c119a940" />
+<img width="948" height="423" alt="image" src="https://github.com/user-attachments/assets/647a605c-11b5-4b04-9928-669cb14dbf3b" />
+
 
 ---
 
